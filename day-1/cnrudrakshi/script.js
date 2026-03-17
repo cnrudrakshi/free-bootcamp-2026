@@ -11,13 +11,16 @@ const thisMonth = document.getElementById("growth");
 const avgTransaction = document.getElementById("average");
 const transactionCount = document.getElementById("transactions");
 const tableTransactionCount = document.getElementById("tableTransactionCount");
+const noDataMessage = document.getElementById("noDataMessage");
+
+const categoryChart = document.getElementById("categoryChart");
 
 let totalExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 const categoryColors = {
   'Food': 'rgb(255, 99, 132)',
-  'Travel': 'rgb(54, 162, 235)',
-  'Bills': 'rgb(255, 205, 86)',
+  'Travel': 'rgb(255, 205, 86)',
+  'Bills': 'rgb(54, 162, 235)',
   'Entertainment': ' rgb(220, 202, 232)',
   'Shopping': 'rgba(117, 227, 190, 1)',
   'Health Care': ' rgb(213, 227, 188)',
@@ -47,13 +50,11 @@ function updatedCards() {
   }
 
   totalSpending.textContent = "₹ " + total;
-  thisMonth.textContent = "₹" + monthTotal;
+  thisMonth.textContent = "₹" + total;
   avgTransaction.textContent = "₹" + avg;
   transactionCount.textContent = totalExpenses.length;
   tableTransactionCount.textContent = totalExpenses.length + " transactions";
 }
-
-displayTransactions();
 // Add Transactions
 function addTransaction(date, description, cateogry, amount) {
   totalExpenses.push({
@@ -83,7 +84,19 @@ form.addEventListener("submit", function (event) {
     alert("Fill the cateogry");
     return;
   }
-  addTransaction(new Date().toLocaleDateString(), title, cateogry, amount);
+  addTransaction(
+  new Date().toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }),
+  title,
+  cateogry,
+  amount
+);
   titleInput.value = "";
   amountInput.value = "";
   cateogryInput.value = "";
@@ -92,15 +105,18 @@ form.addEventListener("submit", function (event) {
 // Display Transactions
 function displayTransactions() {
   expenseTable.innerHTML = "";
- if(totalExpenses.length === 0){
-    let row = document.createElement('tr');
-    row.innerHTML = `
-        <td class="default-items" colspan="5" style="text-align:center; padding:10px;">
-            💸 No transactions yet. Add your first expense to get started!
-        </td>
-    `;
-    expenseTable.appendChild(row);
-    return;
+if(totalExpenses.length === 0){
+  let row = document.createElement('tr');
+  row.innerHTML = `
+      <td class="default-items" colspan="5" style="text-align:center; padding:10px;">
+          💸 No transactions yet. Add your first expense to get started!
+      </td>
+  `;
+  expenseTable.appendChild(row);
+
+  updatedCards();
+  updateCategoryChart(); 
+  return;
 }
   totalExpenses.forEach((transactions, index) => {
     let row = document.createElement('tr');
@@ -117,12 +133,12 @@ function displayTransactions() {
                         </span>`;
 
     row.innerHTML = `
-      <td>${transactions.date}</td>
-      <td>${transactions.description}</td>
-      <td>${categoryChip}</td>
-      <td>&#8377;${transactions.amount}</td>
+      <td class="tableData text-secondary text-start">${transactions.date}</td>
+      <td class="tableData">${transactions.description}</td>
+      <td class="tableData text-start">${categoryChip}</td>
+      <td class="tableData text-end">&#8377;${transactions.amount}</td>
       <td class="text-center">
-        <button class="btn btn-sm text-center delete-btn" onclick="deleteTransaction(${index})">
+        <button class=" border-0 btn btn-sm text-center delete-btn" onclick="deleteTransaction(${index})">
           <i class="fa-solid fa-trash text-danger"></i>
         </button>
       </td>
@@ -131,6 +147,7 @@ function displayTransactions() {
   });
 
   updatedCards();
+  updateCategoryChart(); 
 }
 
 // Delete Transaction
@@ -139,30 +156,72 @@ function deleteTransaction(index) {
   localStorage.setItem("expenses", JSON.stringify(totalExpenses));
   displayTransactions();
 }
+function updateCategoryChart() {
 
-const ctx = document.getElementById('myChart');
-const data = {
-  labels: ['Food', 'Travel', 'Bills', 'Entertainment', 'Shopping', 'Health Care', 'Others'],
-  datasets: [{
-    label: 'Expenses by cateogry',
-    data: [300, 50, 100, 80, 120, 60, 40],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)',
-      'rgb(220, 202, 232)',
-      'rgba(117, 227, 190, 1)',
-      'rgb(213, 227, 188)',
-      'rgb(254, 255, 181)'
-    ],
-    hoverOffset: 4
-  }]
-};
+  const categoryTotals = {
+    'Food': 0,
+    'Travel': 0,
+    'Shopping': 0,
+    'Entertainment': 0,
+    'Bills': 0,
+    'Others': 0
+  };
 
-const config = {
-  type: 'doughnut',
-  data: data
-};
+  totalExpenses.forEach(expense => {
+    if (categoryTotals.hasOwnProperty(expense.cateogry)) {
+      categoryTotals[expense.cateogry] += Number(expense.amount);
+    } else {
+      categoryTotals['Others'] += Number(expense.amount);
+    }
+  });
 
+  const labels = Object.keys(categoryTotals).filter(cat => categoryTotals[cat] > 0);
+const data = labels.map(label => categoryTotals[label]);
+const backgroundColors = labels.map(label => {
+  return categoryColors[label] || '#e0e0e0'; // fallback grey
+});
 
-new Chart(ctx, config);
+ if (labels.length === 0) {
+  categoryChart.style.display = "none";
+  noDataMessage.style.display = "block";
+
+  if (window.myCategoryChart) {
+    window.myCategoryChart.destroy();
+  }
+  return;
+} else {
+  categoryChart.style.display = "block";
+  noDataMessage.style.display = "none";
+}
+
+  // destroy old chart
+  if (window.myCategoryChart) {
+    window.myCategoryChart.destroy();
+  }
+
+  // create new chart
+  const ctx = categoryChart.getContext('2d');
+
+  window.myCategoryChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: backgroundColors.slice(0, labels.length),
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+}
+displayTransactions();
+updateCategoryChart();

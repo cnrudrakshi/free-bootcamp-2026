@@ -13,56 +13,63 @@
 
 <body class="bs-body-color">
   <header>
-    <nav class="navbar shadow-sm py-2">
-      <div class="container d-flex align-items-center justify-content-start gap-1">
-        <a class="navbar-brand fs-5 fw-bold" href="#">
-          <i class="fa-solid fa-wallet bg-color text-white p-2 rounded-1"></i>
-        </a>
-        <div class="align-items-center pt-3">
-          <h3 class="m-0 fs-4">Personal Finance Dashboard</h3>
-          <p class="text-secondary fs-6 lead">
-            Track your expenses and visualize spending
-          </p>
+    <nav class="navbar shadow-sm py-3">
+      <div class="container">
+
+        <div class="d-flex align-items-center gap-3">
+
+          <!-- Icon -->
+          <i class="fa-solid fa-wallet bg-color text-white p-2 rounded-2" style="font-size: 25px;"></i>
+
+          <!-- Text -->
+          <div>
+            <h3 class="m-0 fs-4 fw-bold">Personal Finance Dashboard</h3>
+            <p class="text-secondary mb-0  p-font">
+              Track your expenses and visualize spending
+            </p>
+          </div>
+
         </div>
+
       </div>
     </nav>
   </header>
   <!-- cards -->
   <div class="container mt-5">
     <div class="row">
-      <div class="col-sm-3 mb-3 mb-sm-0 ">
-        <div class="card p-3">
+      <div class="col-sm-3 mb-3 mb-sm-0 border-0">
+        <div class="card p-1 border-0">
           <div class="card-body">
-            <i class="fa-solid fa-dollar-sign fs-5 text-primary bg-primary-subtle p-2 mb-2 rounded"></i>
-            <p>Total Spending</p>
-            <div id="spendings"></div>
+            <i class="fa-solid fa-dollar-sign fs-5 text-primary  p-2 mb-2 rounded-3" style="background-color: #e8effb;"></i>
+            <p class="p-font text-secondary">Total Spending</p>
+            <div id="spendings" class="fw-bold fs-4 text-dark"></div>
           </div>
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="card p-3">
+        <div class="card p-1 border-0">
           <div class="card-body">
-            <i class="fa-regular fa-calendar fs-5 text-success bg-success-subtle p-2 mb-2 rounded"></i>
-            <p>This Month</p>
-            <div id="growth"></div>
+            <i class="fa-regular fa-calendar fs-5 text-success p-2 mb-2 rounded" style="background-color: #e8f8f0;"></i>
+            <p class="p-font text-secondary">This Month</p>
+            <div id="growth" class="fw-bold fs-4 text-dark"></div>
           </div>
         </div>
       </div>
       <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card p-3">
+        <div class="card p-1 border-0">
           <div class="card-body">
-            <i class="fa-solid fa-arrow-trend-up fs-5 text-info bg-info-subtle p-2 mb-2 rounded"></i>
-            <p>Avg. Transaction</p>
-            <div id="average"></div>
+            <i class="fa-solid fa-arrow-trend-up fs-5 text-info  p-2 mb-2 rounded" style="background-color: #e6f7fa"></i>
+            <p class="p-font text-secondary">Avg. Transaction</p>
+            <div id="average" class="fw-bold fs-4 text-dark"></div>
           </div>
         </div>
       </div>
       <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card p-3">
+        <div class="card p-1 border-0">
           <div class="card-body">
-            <i class="fa-regular fa-credit-card fs-5 text-danger bg-danger-subtle p-2 mb-2 rounded"></i>
-            <p>Transactions</p>
-            <div id="transactions"></div>
+            <i class="fa-regular fa-credit-card fs-5 text-danger p-2 mb-2 rounded" style="background-color: #fdecea"></i>
+            <p class="p-font text-secondary">Transactions</p>
+            <div id="transactions" class="fw-bold fs-4 text-dark"></div>
           </div>
         </div>
       </div>
@@ -70,63 +77,91 @@
   </div>
 
   <!-- form -->
-  <div class=" container mt-3 d-flex gap-4 ">
-    <div class="left">
-      <form id="form" class="max-width p-4 shadow-sm border rounded-3  bg-white ">
-        <p class="fs-5 fw-bold">Add new Expense</p>
-        <div class="mb-3">
-          <label class="form-label">Description</label>
-          <input id="titleInput" type="text" class="form-control" placeholder="e.g., Grocery Shopping">
+  <div class="container mt-3">
+    <div class="row g-4">
+
+      <!-- LEFT SIDE (Form + Chart) -->
+      <div class="col-lg-4 col-12">
+
+        <!-- FORM -->
+        <form id="form" class="p-4 shadow-sm  rounded-3 bg-white mb-4">
+          <p class="fs-5 fw-bold">Add new Expense</p>
+
+          <div class="mb-3">
+            <label class="form-label p-font">Description</label>
+            <input id="titleInput" type="text" class="form-control" placeholder="e.g., Grocery Shopping">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label p-font">Amount (₹)</label>
+            <input id="amountInput" type="text" class="form-control" placeholder="0.00">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label p-font">Category</label>
+            <select id="dropdownSelector" class="form-select">
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
+              <option value="Bills">Bills</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Health Care">Health Care</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary bg-color border-0 w-100">
+            <i class="fa-solid fa-plus fs-6 p-1"></i>
+            Add New Expense
+          </button>
+        </form>
+
+        <!-- CHART -->
+        <div class="p-4 shadow-sm  rounded-3 bg-white">
+          <h3 class="fs-5 fw-bold">Spending by Category</h3>
+          <div id="noDataMessage" class="text-center text-secondary p-5" style="display: none;">
+            <div style="font-size: 30px;">📊</div>
+            <p class="m-0 fw-semibold">No data to display</p>
+            <small>Add expenses to see the chart</small>
+          </div>
+          <canvas id="categoryChart"></canvas>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Amount()</label>
-          <input id="amountInput" type="text" class="form-control" placeholder="0.00">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Cateogry</label>
-          <select id="dropdownSelector" class="form-select" aria-label="Default select example">
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Bills">Bills</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Health Care">Health Care</option>
-            <option value="Others">Others</option>
-          </select>
-        </div>
-        <button id="addNewExpense" type="submit" class="btn btn-primary bg-color   border-0 w-100">
-          <i class="fa-solid fa-plus border rounded-circle fs-6 p-1"></i>
-          Add New Expense</button>
-      </form>
-      <div class="mt-3 p-4 max-width shadow-sm border rounded-3  bg-white ">
-        <h3 class="fs-5 fw-bold">Spending by Category</h3>
-        <canvas id="myChart"></canvas>
+
       </div>
-    </div>
-    <div class="w-100 border shadow-sm rounded-3 bg-white" style="height: 300px;">
-      <div class="header border-bottom">
-        <p class="fs-5 fw-bold ms-4 mt-3">Transaction History</p>
-       <p id="tableTransactionCount" class="ms-4 text-secondary fs-6"></p>
+
+      <!-- RIGHT SIDE (TABLE) -->
+      <div class="col-lg-8 col-12">
+        <div class=" shadow-sm rounded-3 bg-white h-100">
+
+          <div class="border-bottom p-3">
+            <p class="fs-5 fw-bold m-0">Transaction History</p>
+            <p id="tableTransactionCount" class="text-secondary fs-6 m-0"></p>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle m-0">
+              <thead>
+                <tr>
+                  <th class="text-secondary fw-semibold table-font text-start">DATE</th>
+                  <th class="text-secondary fw-semibold table-font text-start">DESCRIPTION</th>
+                  <th class="text-secondary fw-semibold table-font text-start">CATEGORY</th>
+                  <th class="text-secondary fw-semibold table-font text-end">AMOUNT (₹)</th>
+                  <th class="text-secondary fw-semibold table-font text-end">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="expenseBody"></tbody>
+            </table>
+          </div>
+
+        </div>
       </div>
 
-      <table id="table" class="table table-striped table-hover align-middle">
-        <thead>
-          <tr>
-            <th>DATE</th>
-            <th>DESCRIPTION</th>
-            <th>CATEGORY</th>
-            <th>AMOUNT (₹)</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-
-        <tbody id="expenseBody"></tbody>
-      </table>
     </div>
+  </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

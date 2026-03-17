@@ -4,23 +4,21 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-
 .bg-color {
-    background: linear-gradient(45deg, rgb(37, 108, 231), rgb(202, 71, 202));
+    background: linear-gradient(45deg, rgb(70, 58, 209), rgb(202, 71, 202));
 }
-
+.p-font{
+    font-size: 15px;
+}
 .max-width {
     width: 400px;
 }
-
 .min-height {
     min-height: 300px;
 }
-
 .delete-btn {
     transition: all 0.3s ease;
 }
-
 .delete-btn:hover {
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
     transform: scale(1.1);
@@ -36,4 +34,32 @@
     padding: 20px;
     color: gray;
     font-size: 1rem;
+}
+.card {
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.card:hover i {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+.table-font {
+  font-size: 0.8rem;
+}
+.tableData {
+  font-size: 0.9rem;
+}
+.card i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
 }
