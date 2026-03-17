@@ -303,16 +303,16 @@ Before submitting your Pull Request, ensure the following requirements are met.
 
 Please check all applicable boxes.
 
-* [ ] I have followed the UI provided in the Figma design
-* [ ] My project is placed inside the `day-1/<github-username>/` folder
-* [ ] The application runs correctly in the browser
+* [✅] I have followed the UI provided in the Figma design
+* [✅] My project is placed inside the `day-1/<github-username>/` folder
+* [✅] The application runs correctly in the browser
 * [ ] I have used **HTML, CSS, and Vanilla JavaScript only**
-* [ ] I have implemented **localStorage** to persist expense data
-* [ ] I have integrated **Chart.js** for spending visualization
-* [ ] Transactions update dynamically when a new expense is added
-* [ ] My code is properly formatted and readable
-* [ ] I have tested my application before submitting
-* [ ] I confirm that this is **my own work**
+* [✅] I have implemented **localStorage** to persist expense data
+* [✅] I have integrated **Chart.js** for spending visualization
+* [✅] Transactions update dynamically when a new expense is added
+* [✅] My code is properly formatted and readable
+* [✅] I have tested my application before submitting
+* [✅] I confirm that this is **my own work**
 
 ---
 
