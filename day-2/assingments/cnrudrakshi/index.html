@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Article Summarizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-sparkles w-8 h-8">
+                    <path
+                        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                    </path>
+                    <path d="M20 3v4"></path>
+                    <path d="M22 5h-4"></path>
+                    <path d="M4 17v2"></path>
+                    <path d="M5 18H3"></path>
+                </svg>
+            </div>
+            <h1>AI Article Summarizer</h1>
+            <p>Transform long articles into concise summaries with AI-powered technology</p>
+        </div>
+    </header>
+    <main>
+        <div class="main">
+            <div class="form">
+                <form action="" onsubmit="event.preventDefault()">
+                    <div class="form-heading">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="color: rgb(83, 70, 225);">
+                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                            <path d="M10 9H8"></path>
+                            <path d="M16 13H8"></path>
+                            <path d="M16 17H8"></path>
+                        </svg>
+                        <p>Original Article</p>
+                    </div>
+                    <p>Paste your article here</p>
+                    <textarea id="inputText"
+                        placeholder="Paste your long article, blog post, or any text you want to summarize..."></textarea>
+                    <p>0 words</p>
+                    <div class="select-btns">
+
+                        <button type="button" class="select-btn" data-value="short">
+                            <span class="bullet"></span>
+                            <div class="text">
+                                <h4>Short </h4>
+                                <p>Quick and concise overview</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="select-btn" data-value="medium">
+                            <span class="bullet"></span>
+                            <div class="text">
+                                <h4>Medium </h4>
+                                <p>Balanced and informative Summary</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="select-btn" data-value="detailed">
+                            <span class="bullet"></span>
+                            <div class="text">
+                                <h4>Detailed </h4>
+                                <p>In-depth explanation with key points</p>
+                            </div>
+                        </button>
+
+                    </div>
+
+                  <button type="button" id="generateBtn" onclick="generateSummary()">
+                        <i class="fa-solid fa-bolt"></i>
+                        Generate Summary
+                    </button>
+
+                    <div id="loading" class="loading"></div>
+                </form>
+            </div>
+
+            <div class="result-box">
+                <div class="heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="color: rgb(125, 61, 208);">
+                        <path
+                            d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                        </path>
+                        <path d="M20 3v4"></path>
+                        <path d="M22 5h-4"></path>
+                        <path d="M4 17v2"></path>
+                        <path d="M5 18H3"></path>
+                    </svg>
+                    <p>AI Summary</p>
+                </div>
+                <div class="output" id="output">
+                    <div class="default">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                            </path>
+                            <path d="M20 3v4"></path>
+                            <path d="M22 5h-4"></path>
+                            <path d="M4 17v2"></path>
+                            <path d="M5 18H3"></path>
+                        </svg>
+                        <h4>Your summary will appear here</h4>
+                        <p>Paste an article and click "Generate Summary"</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+  
+</body>
+
+</html>
