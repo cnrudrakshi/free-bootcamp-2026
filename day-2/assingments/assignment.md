@@ -89,6 +89,7 @@ Integrate with any AI provider such as:
 
 * OpenAI API
 * HuggingFace Inference API
+* Pollination API key (https://enter.pollinations.ai/api/docs)
 
 Your application must:
 
@@ -289,7 +290,7 @@ Day 2 — AI Article Summarizer
 * [ ] My project is placed inside the `day-2/<github-username>/` folder
 * [ ] The application runs correctly in the browser
 * [ ] I have used **HTML, CSS, and Vanilla JavaScript only**
-* [ ] I have integrated an **AI API (OpenAI or HuggingFace)**
+* [ ] I have integrated an **AI API (OpenAI or HuggingFace or Pollination)**
 * [ ] I have used **Fetch API with async/await**
 * [ ] I have implemented **loading states**
 * [ ] I have added **summary length options**
