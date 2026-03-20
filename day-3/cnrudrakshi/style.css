@@ -1,0 +1,133 @@
+header{
+    background: #fdfdffc4;
+     backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+    position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.icon-box {
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #4157e6, #b63ae8);
+}
+.card img{
+    background: linear-gradient(45deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+}
+svg {
+  color: #fff;
+}
+.btn {
+  border: 0.9px solid #cbc8c8 !important;
+}
+button.btn:hover {
+  background: rgba(134, 134, 137, 0.1) !important;
+  color: rgb(1, 1, 1) !important;
+}
+main{
+    margin-top: 250px;
+    background:linear-gradient(45deg,#f1f6ff, #fbf5fe)
+}
+.bg-color{
+    background-color: #f0f0f0;
+}
+.bg-gradient{
+    background: linear-gradient(45deg, #4157e6, #b63ae8) !important;
+}
+.font-size{
+    font-size: 15px;   
+}
+.bg-shade{
+    background:#eff6ff !important;
+}
+.img-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.bookmark-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 6px 8px;
+  border-radius: 50%;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.small-img {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 4px solid white;
+}
+.small-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.btn.bg-gradient:hover {
+  background: linear-gradient(45deg, #2f44c9, #9c2fd1) !important;
+  color: #fff !important;
+}
+.img-wrapper {
+  object-fit: cover;
+  overflow: hidden;
+   border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.img-wrapper .image-hover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.card:hover .img-wrapper .image-hover {
+  transform: scale(1.1);
+}
+.card:hover .p-hover {
+  color: rgb(39, 39, 236);
+}
+.job-badge {
+  transition: all 0.3s ease;
+}
+.card:hover h1 {
+  color: #0565f5 !important;
+}
+.btn-filter.active {
+    background: linear-gradient(45deg, #4157e6, #b63ae8);
+    color: white;
+}
+.btn-filter {
+     width: 100px;
+     display: inline-block;
+}
+.bookmark-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.bookmark-icon svg {
+  width: 20px;
+  height: 20px;
+  color: black;
+}
+#bookmarkSvg {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
