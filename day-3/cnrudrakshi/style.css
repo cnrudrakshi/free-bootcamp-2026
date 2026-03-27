@@ -116,12 +116,12 @@ main{
   top: 10px;
   right: 10px;
   background: white;
-  padding: 6px;
+  padding: 7px 9px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-}
 
+}
 .bookmark-icon svg {
   width: 20px;
   height: 20px;
@@ -130,4 +130,59 @@ main{
 #bookmarkSvg {
     transition: all 0.3s ease;
     cursor: pointer;
+}
+.no-bookmark-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(230, 244, 248);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.anchor-hover{
+    text-decoration: none;
+    color: rgb(76, 75, 75);
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 15px;
+}
+.anchor-hover:hover{
+  background-color: rgb(241, 245, 245);
+}
+.bookmarked-only{
+  background: rgb(251, 247, 186);
+  color: rgb(115, 84, 84);
+  padding: 6px 15px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+}
+i:hover {
+    color: rgb(255, 123, 0);
+    transform: scale(1.2);
+}
+.search-tag {
+    background: #e3f2fd;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: rgb(0, 48, 179);
+}
+.clear-filter-btn{
+  background: rgb(244, 231, 216);
+  color: rgb(115, 84, 84);
+  padding: 6px 15px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+}
+.bookmark-hover:hover{
+  color: red;
 }

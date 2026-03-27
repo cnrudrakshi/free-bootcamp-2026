@@ -282,20 +282,20 @@ Day 3 — Job Search Dashboard
 
 ## Validation Checklist
 
-* [ ] I have followed the UI provided in the Figma design
-* [ ] My project is placed inside the `day-3/<github-username>/` folder
-* [ ] The application runs correctly in the browser
-* [ ] I have used **HTML, CSS, and Vanilla JavaScript only**
-* [ ] I have fetched data from the provided jobs API
-* [ ] I have used **Fetch API with async/await**
-* [ ] I have implemented **search functionality**
-* [ ] I have implemented **filters (location/job type)**
-* [ ] I have implemented **bookmark/save feature**
-* [ ] I have used **localStorage for persistence**
-* [ ] I have handled **loading and empty states**
-* [ ] My code is properly formatted and readable
-* [ ] I have tested my application before submitting
-* [ ] I confirm that this is **my own work**
+* [✅] I have followed the UI provided in the Figma design
+* [✅] My project is placed inside the `day-3/<github-username>/` folder
+* [✅] The application runs correctly in the browser
+* [✅] I have used **HTML, CSS, and Vanilla JavaScript only**
+* [✅] I have fetched data from the provided jobs API
+* [✅] I have used **Fetch API with async/await**
+* [✅] I have implemented **search functionality**
+* [✅] I have implemented **filters (location/job type)**
+* [✅] I have implemented **bookmark/save feature**
+* [✅] I have used **localStorage for persistence**
+* [✅] I have handled **loading and empty states**
+* [✅] My code is properly formatted and readable
+* [✅] I have tested my application before submitting
+* [✅] I confirm that this is **my own work**
 
 ---
 
